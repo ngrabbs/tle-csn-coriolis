@@ -3,7 +3,7 @@ import urllib.request
 from pathlib import Path
 
 CSN_URL = "http://www.csntechnologies.net/SAT/csnbare.txt"
-CORIOLIS_URL = "https://celestrak.org/NORAD/elements/gp.php?CATNR=27640&FORMAT=tle"
+CORIOLIS_URL = "http://celestrak.org/NORAD/elements/gp.php?CATNR=27640&FORMAT=tle"
 OUTPUT_FILE = Path("csn_plus_coriolis.tle")
 
 
@@ -66,7 +66,7 @@ def main():
     # Append Coriolis block at the end
     merged_blocks.append("\n".join([coriolis_name, coriolis_l1, coriolis_l2]))
 
-    output_text = "\n\n".join(merged_blocks) + "\n"
+    output_text = "\n".join(merged_blocks) + "\n"
     OUTPUT_FILE.write_text(output_text, encoding="utf-8")
     print(f"Wrote merged file to {OUTPUT_FILE.resolve()}")
 
